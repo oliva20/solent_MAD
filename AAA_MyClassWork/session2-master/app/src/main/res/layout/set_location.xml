@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
-
-   <!-- <LinearLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -47,19 +46,11 @@
 
     </LinearLayout>
 
-     <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/go"
-            android:id="@+id/btn"
-            android:textSize="20dp"/> -->
-
-    <org.osmdroid.views.MapView
+    <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:enabled="true"
-        android:clickable="true"
-        android:id="@+id/map1"
-        tilesource="Mapnik"
-        />
+        android:layout_height="wrap_content"
+        android:text="@string/go"
+        android:id="@+id/btn"
+        android:textSize="20dp"/>
+
 </LinearLayout>

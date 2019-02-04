@@ -8,4 +8,5 @@
     <string name="hikebikemapview">HikeBike view</string>
     <string name="selectmap">Select map</string>
     <string name="setLocation">Set location</string>
+    <string name="setlongandlat">Set long and lat</string>
 </resources>

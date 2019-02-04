@@ -12,6 +12,7 @@ public class MapChooseActivity extends AppCompatActivity implements View.OnClick
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_map_choose);
+
         Button regular = (Button) findViewById(R.id.btnRegular);
         regular.setOnClickListener(this);
         Button hikebikemap = (Button) findViewById(R.id.btnHikeBikeMap);
@@ -22,16 +23,19 @@ public class MapChooseActivity extends AppCompatActivity implements View.OnClick
     public void onClick(View v)
     {
         Intent intent = new Intent();
-        Bundle bundle=new Bundle();
-        boolean hikebikemap=false;
-        if (v.getId()==R.id.btnHikeBikeMap)
-        {
+        Bundle bundle = new Bundle();
+        boolean hikebikemap = false;
+
+        if (v.getId()==R.id.btnHikeBikeMap){
             hikebikemap=true;
         }
-        bundle.putBoolean("com.example.hikebikemap",hikebikemap);
+
+        bundle.putBoolean("com.example.hikebikemap", hikebikemap);
         intent.putExtras(bundle);
-        setResult(RESULT_OK,intent);
+        setResult(RESULT_OK, intent);
+
         finish();
     }
+
 
 }
