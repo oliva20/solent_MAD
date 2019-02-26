@@ -9,4 +9,5 @@
     <string name="selectmap">Select map</string>
     <string name="setLocation">Set location</string>
     <string name="setlongandlat">Set long and lat</string>
+    <string name="prefs">Preferences</string>
 </resources>

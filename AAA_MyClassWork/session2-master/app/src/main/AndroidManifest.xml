@@ -28,6 +28,10 @@
         <activity android:name=".MapChooseActivity" android:label="@string/selectmap"></activity>
 
         <activity android:name=".SetLocationActivity" android:label="@string/setlongandlat"></activity>
+
+        <activity android:name=".PrefsActivity" android:label="Preferences menu"></activity>
+
+        <activity android:name=".ExampleListActivity" android:label="List activity"></activity>
     </application>
 
 </manifest>

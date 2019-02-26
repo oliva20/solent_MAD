@@ -1,6 +1,8 @@
 package uk.ac.solent.mapping;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -25,10 +27,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Double lat = Double.parseDouble(pref.getString("lat", "51.05"));
+        Double lon = Double.parseDouble(pref.getString("lon", "-0.72"));
+        Integer zoom = Integer.parseInt(pref.getString("zoom", "16"));
 
         MapView mv = findViewById(R.id.map1);
-        mv.getController().setCenter(new GeoPoint(51.05, -0.72));
-        mv.getController().setZoom(16);
+        mv.getController().setCenter(new GeoPoint(lat, lon));
+        mv.getController().setZoom(zoom);
 
         mv.setBuiltInZoomControls(true);
         mv.setClickable(true);
@@ -67,6 +73,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         return true;
     }
 
+
     // Reacts to an item being selected
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.choosemap) {
@@ -78,8 +85,39 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             Intent intent = new Intent(this, SetLocationActivity.class);
             startActivityForResult(intent, 1);
             return true;
+        } else if(item.getItemId() == R.id.prefsMenuItem){
+            Intent intent = new Intent(this, PrefsActivity.class);
+            startActivity( intent);
+            return true;
+        } else if(item.getItemId() == R.id.listactivityoption){
+            Intent intent = new Intent(this, ExampleListActivity.class);
+            startActivityForResult(intent, 0);
         }
         return false;
+    }
+
+    //called when the activity is pauses
+    public void onPause(){
+        super.onPause();
+    }
+
+    //called when the acitivity is resumed
+    public void onResume(){
+        super.onResume();
+
+        // read our preferences in onResume()...
+        SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+
+        Double lat = Double.parseDouble(pref.getString("lat", "51.05"));
+        Double lon = Double.parseDouble(pref.getString("lon", "-0.72"));
+        Integer zoom = Integer.parseInt(pref.getString("zoom", "16"));
+
+        MapView mv = findViewById(R.id.map1);
+        mv.getController().setCenter(new GeoPoint(lat, lon));
+        mv.getController().setZoom(zoom);
+
+        mv.setBuiltInZoomControls(true);
+        mv.setClickable(true);
     }
 
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
